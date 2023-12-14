@@ -21,9 +21,9 @@ jobs:
         if: ${{ github.ref_type == 'branch' }}
 
       - name: Docker build main
-        run: make docker ARGS="-t latest"
+        run: make docker_main
         if: ${{ github.ref_type == 'branch' && github.ref_name == 'main' }}
 
       - name: Docker build tag
-        run: make docker ARGS="-t ${{github.ref_name}}"
+        run: make docker_tag TAG="${{github.ref_name}}"
         if: ${{ github.ref_type == 'tag' }}
