@@ -8,7 +8,7 @@ DOCKER_REPO=builder-bash
 DOCKER_BUILD_BRANCH_CMD=dockerBuildStandardBranch -e ${DOCKER_REGISTRY} -r ${DOCKER_REPO} ${ARGS}
 DOCKER_BUILD_MAIN_CMD=dockerBuildStandardMain -e ${DOCKER_REGISTRY} -r ${DOCKER_REPO} ${ARGS}
 DOCKER_BUILD_TAG_CMD=dockerBuildStandardTag ${TAG} -e ${DOCKER_REGISTRY} -r ${DOCKER_REPO} ${ARGS}
-DOCKER_BUILDER_IMAGE=flounder5/builder-docker:v0.0.8
+DOCKER_BUILDER_IMAGE=flounder5/builder-docker:v0.0.10
 DOCKER_BUILDER_PULL_CMD=docker pull ${DOCKER_BUILDER_IMAGE}
 DOCKER_BUILDER_RUN_CMD=${DOCKER_BUILDER_PULL_CMD} && \
     docker run \
