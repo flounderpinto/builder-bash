@@ -1,4 +1,4 @@
-FROM flounder5/runner-bash:v0.0.3
+FROM flounderpinto/runner-bash:v0.0.3
 
 RUN apt-get update && \
     apt-get install -y \
