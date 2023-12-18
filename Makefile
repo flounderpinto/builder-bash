@@ -5,10 +5,10 @@ CONTAINER_CODE_DIR=/opt/code
 DOCKER_REGISTRY=index.docker.io/flounderpinto
 
 DOCKER_REPO=builder-bash
-DOCKER_BUILD_BRANCH_CMD=dockerBuildStandardBranch -e ${DOCKER_REGISTRY} -r ${DOCKER_REPO} ${ARGS}
-DOCKER_BUILD_MAIN_CMD=dockerBuildStandardMain -e ${DOCKER_REGISTRY} -r ${DOCKER_REPO} ${ARGS}
-DOCKER_BUILD_TAG_CMD=dockerBuildStandardTag ${TAG} -e ${DOCKER_REGISTRY} -r ${DOCKER_REPO} ${ARGS}
-DOCKER_BUILDER_IMAGE=${DOCKER_REGISTRY}/builder-docker:v0.0.11
+DOCKER_BUILD_BRANCH_CMD=dockerBuildStandardBranch -r ${DOCKER_REPO} ${ARGS}
+DOCKER_BUILD_MAIN_CMD=dockerBuildStandardMain -r ${DOCKER_REPO} ${ARGS}
+DOCKER_BUILD_TAG_CMD=dockerBuildStandardTag ${TAG} -r ${DOCKER_REPO} ${ARGS}
+DOCKER_BUILDER_IMAGE=${DOCKER_REGISTRY}/builder-docker-flounderpinto:v0.1.0
 DOCKER_BUILDER_PULL_CMD=docker pull ${DOCKER_BUILDER_IMAGE}
 DOCKER_BUILDER_RUN_CMD=${DOCKER_BUILDER_PULL_CMD} && \
     docker run \
@@ -16,7 +16,6 @@ DOCKER_BUILDER_RUN_CMD=${DOCKER_BUILDER_PULL_CMD} && \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v ${HOME}/.docker:/tmp/.docker:ro \
         -v ${ROOT_DIR}:${CONTAINER_CODE_DIR} \
-        -w ${CONTAINER_CODE_DIR} \
         ${DOCKER_BUILDER_IMAGE}
 
 .PHONY: docker docker_main docker_tag
